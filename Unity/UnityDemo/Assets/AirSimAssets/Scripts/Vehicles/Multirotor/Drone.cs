@@ -16,7 +16,7 @@ namespace AirSimUnity {
         private float rotationFactor = 0.1f;
         
         private new void Start() {
-            base.Start(); 
+            base.Start();
 
             for (int i = 0; i < rotors.Length; i++) {
                 rotorInfos.Add(new RotorInfo());
@@ -40,6 +40,7 @@ namespace AirSimUnity {
 
                 transform.position = position;
                 transform.rotation = rotation;
+
 
                 for (int i = 0; i < rotors.Length; i++)
                 {

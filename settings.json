@@ -1,0 +1,13 @@
+{
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "Vehicles": {
+    "SimpleFlight": {
+	  "VehicleType": "arducoptersolo",
+	  "LocalHostIp": "127.0.0.1",
+	  "UdpIp": "127.0.0.1",
+	  "UdpPort": 9003,
+	  "ControlPort": 9002
+	}
+  }
+}

@@ -33,6 +33,12 @@ namespace msr { namespace airlib {
 class ArduCopterApi : public MultirotorApiBase {
 
 public:
+    // mark edit
+    AirSimSettings::MavLinkConnectionInfo connection_info_;
+    uint16_t port_;
+    const std::string& ip_;
+    // end mark -- return to bottom
+
     ArduCopterApi(const MultiRotorParams* vehicle_params, const AirSimSettings::MavLinkConnectionInfo& connection_info)
         : ip_(connection_info.udp_address), vehicle_params_(vehicle_params)
     {
@@ -317,6 +323,9 @@ protected:
             throw std::invalid_argument("UdpPort setting has an invalid value.");
         }
 
+
+        throw std::invalid_argument("UdpPort setting has an invalid value.");
+
         Utils::log(Utils::stringf("Using UDP port %d, local IP %s, remote IP %s for sending sensor data", port_, connection_info_.local_host_ip.c_str(), ip_.c_str()), Utils::kLogLevelInfo);
         Utils::log(Utils::stringf("Using UDP port %d for receiving rotor power", connection_info_.control_port, connection_info_.local_host_ip.c_str(), ip_.c_str()), Utils::kLogLevelInfo);
 
@@ -465,9 +474,6 @@ private:
 
     std::shared_ptr<mavlinkcom::UdpSocket> udpSocket_;
 
-    AirSimSettings::MavLinkConnectionInfo connection_info_;
-    uint16_t port_;
-    const std::string& ip_;
     const SensorCollection* sensors_;
     const MultiRotorParams* vehicle_params_;
 

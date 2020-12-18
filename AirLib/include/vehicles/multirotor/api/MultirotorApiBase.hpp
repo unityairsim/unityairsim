@@ -171,10 +171,11 @@ protected: //utility methods
     bool waitForZ(float timeout_sec, float z, float margin);
 
     /************* other short hands ************/
-    virtual Vector3r getPosition() const
+    // mark edit moved to public
+    /*virtual Vector3r getPosition() const
     {
         return getKinematicsEstimated().pose.position;
-    }
+    }*/
     virtual Vector3r getVelocity() const
     {
         return getKinematicsEstimated().twist.linear;
@@ -190,6 +191,13 @@ protected: //utility methods
     }
 
 public: //types
+
+    // mark edit remove vunction
+    virtual Vector3r getPosition() const
+    {
+        return getKinematicsEstimated().pose.position;
+    }
+    //
     class UnsafeMoveException : public VehicleMoveException {
     public:
         const SafetyEval::EvalResult result;

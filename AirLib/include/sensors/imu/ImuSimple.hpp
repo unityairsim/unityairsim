@@ -58,9 +58,11 @@ private: //methods
         //acceleration is in world frame so transform to body frame
         output.linear_acceleration = VectorMath::transformToBodyFrame(output.linear_acceleration, 
             ground_truth.kinematics->pose.orientation, true);
+        output.angular_velocity = VectorMath::transformToBodyFrame(output.angular_velocity,
+            ground_truth.kinematics->pose.orientation, true);
 
         //add noise
-        addNoise(output.linear_acceleration, output.angular_velocity);
+        //addNoise(output.linear_acceleration, output.angular_velocity);
         // TODO: Add noise in orientation?
 
         output.time_stamp = clock()->nowNanos();

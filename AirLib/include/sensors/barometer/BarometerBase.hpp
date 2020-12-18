@@ -21,7 +21,7 @@ public: //types
         TTimePoint time_stamp;
         real_T altitude;    //meters
         real_T pressure;    //Pascal
-        real_T qnh;
+        real_T qnh; // sea level pressure
     };
 
 

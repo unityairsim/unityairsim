@@ -193,11 +193,13 @@ namespace AirSimUnity {
         /********** Methods internal to AirSimSettngs ********/
 
         //Get the settings from the "setting.json" file.
-        private static string GetSettingsContent() {
+        private static string GetSettingsContent()
+        {
             var fileName = InitializeAirSim.GetAirSimSettingsFileName();
 
             string content = "";
-            try {
+            try
+            {
                 string line = "";
                 using (var reader = new StreamReader(fileName, Encoding.Default))
                 {
@@ -208,7 +210,9 @@ namespace AirSimUnity {
                     } while (line != null);
                     reader.Close();
                 }
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogError("Unable to read the settings file : " + e.Message);
                 throw e;
             }

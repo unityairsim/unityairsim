@@ -263,7 +263,7 @@ public: //types
 
         // Used to connect to drone over UDP: needed only if use_serial = false and use_tcp == false
         std::string udp_address = "127.0.0.1";
-        int udp_port = 14560;
+        int udp_port = 14550; //mark 14560;
 
         // Used to accept connections from drone over TCP: needed only if use_tcp = true
         bool use_tcp = false;
@@ -273,7 +273,7 @@ public: //types
         // the "ground control station" channel.
         // So set this to empty string to disable this separate command channel.
         std::string control_ip_address = "127.0.0.1";
-        int control_port = 14580;
+        int control_port = 14551; //mark 14580;
 
         // The log viewer can be on a different machine, so you can configure it's ip address and port here.
         int logviewer_ip_port = 14388;

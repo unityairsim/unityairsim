@@ -358,13 +358,14 @@ private:
 
             next_wrench = body_wrench + drag_wrench;
 
-            //Utils::log(Utils::stringf("B-WRN %s: ", VectorMath::toString(body_wrench.force).c_str()));
-            //Utils::log(Utils::stringf("D-WRN %s: ", VectorMath::toString(drag_wrench.force).c_str()));
+            //Utils::log(Utils::stringf("B-WRN %s: ", VectorMath::toString(body_wrench.force).c_str()), Utils::kLogLevelFile);
+            //Utils::log(Utils::stringf("D-WRN %s: ", VectorMath::toString(drag_wrench.force).c_str()), Utils::kLogLevelFile);
 
             /************************* Update accelerations due to force and torque ************************/
             //get new acceleration due to force - we'll use this acceleration in next time step
 
             next.accelerations.linear = (next_wrench.force / body.getMass()) + body.getEnvironment().getState().gravity;
+            //Utils::log(Utils::stringf("D-WRN %s: ", VectorMath::toString(next.accelerations.linear).c_str()), Utils::kLogLevelFile);
         }
 
 

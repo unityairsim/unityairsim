@@ -24,6 +24,7 @@ void MultirotorPawnSimApi::initialize()
     std::shared_ptr<UnitySensorFactory> sensor_factory = std::make_shared<UnitySensorFactory>(getVehicleName(), &getNedTransform());
     vehicle_params_ = MultiRotorParamsFactory::createConfig(getVehicleSetting(), sensor_factory);
     vehicle_api_ = vehicle_params_->createMultirotorApi();
+	
     //setup physics vehicle
     multirotor_physics_body_ = std::unique_ptr<MultiRotor>(new MultiRotorPhysicsBody(vehicle_params_.get(), vehicle_api_.get(),
         getKinematics(), getEnvironment()));
@@ -108,7 +109,8 @@ void MultirotorPawnSimApi::updateRendering(float dt)
 		}
 	}
 
-	PrintLogMessage("Collision Count:", std::to_string(collision_response.collision_count_non_resting).c_str(), getVehicleName().c_str(), ErrorLogSeverity::Information);
+	// mark edit
+	//PrintLogMessage("Collision Count:", std::to_string(collision_response.collision_count_non_resting).c_str(), getVehicleName().c_str(), ErrorLogSeverity::Information);
 
 	for (auto i = 0; i < vehicle_api_messages_.size(); ++i)
 	{

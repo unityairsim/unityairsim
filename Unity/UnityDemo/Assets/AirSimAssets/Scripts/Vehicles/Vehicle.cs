@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEditor;
 using UnityEngine;
+using System.Diagnostics;
 
 namespace AirSimUnity {
     /*
@@ -50,7 +51,7 @@ namespace AirSimUnity {
         protected void Start() {
             isDrone = this is Drone ? true : false;
             if (isDrone) {
-                GetComponent<Rigidbody>().useGravity = false;
+                GetComponent<Rigidbody>().useGravity = false;// true;
             }
 
             InitializeVehicle();
@@ -73,6 +74,7 @@ namespace AirSimUnity {
         protected void FixedUpdate() {
             if (isServerStarted)
             {
+                //UnityEngine.Debug.Log("Server is started");
                 DataManager.SetToAirSim(transform.position, ref currentPose.position);
                 DataManager.SetToAirSim(transform.rotation, ref currentPose.orientation);
             }
@@ -290,11 +292,11 @@ namespace AirSimUnity {
                 return true;
 
             if (severity == 2) {
-                Debug.LogError(message + " " + messageParams + " Vehicle=" + vehicleName);
+                UnityEngine.Debug.LogError(message + " " + messageParams + " Vehicle=" + vehicleName);
             } else if (severity == 1) {
-                Debug.LogWarning(message + " " + messageParams + " Vehicle=" + vehicleName);
+                UnityEngine.Debug.LogWarning(message + " " + messageParams + " Vehicle=" + vehicleName);
             } else {
-                Debug.Log(message + " " + messageParams + " Vehicle=" + vehicleName);
+                UnityEngine.Debug.Log(message + " " + messageParams + " Vehicle=" + vehicleName);
             }
             return true;
         }
@@ -329,6 +331,9 @@ namespace AirSimUnity {
             DataManager.SetToAirSim(transform.position, ref currentPose.position);
             DataManager.SetToAirSim(transform.rotation, ref currentPose.orientation);
 
+            // mark edit
+            //transform.position = new Vector3(5, 5, 5);
+
             collisionInfo.SetDefaultValues();
             SetUpCameras();
             captureResetEvent = new AutoResetEvent(false);
@@ -339,7 +344,7 @@ namespace AirSimUnity {
         private void SetUpCameras() {
             GameObject camerasParent = GameObject.FindGameObjectWithTag("CaptureCameras");
             if (!camerasParent) {
-                Debug.LogWarning("No Cameras found in the scene to capture data");
+                UnityEngine.Debug.LogWarning("No Cameras found in the scene to capture data");
                 return;
             }
 

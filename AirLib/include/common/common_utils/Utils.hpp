@@ -93,10 +93,25 @@ public:
     public:
         virtual void log(int level, const std::string& message)
         {
-            if (level >= 0)
+            /*if (level >= 0) 
                 std::cout << message << std::endl;
             else
+                std::cerr << message << std::endl;*/
+
+            // mark edit
+            if (level >= 0)
+                std::cout << message << std::endl;
+            else if (level == -3) {
+                std::string m = message + "\n";
+                std::ofstream log_file("C:\\Users\\mark.cline\\Documents\\log_file.txt", std::ofstream::app);
+                if (log_file.is_open()) {
+                    log_file.write(m.c_str(), m.length());
+                    //log_file.close();
+                }
+            }
+            else
                 std::cerr << message << std::endl;
+            // mark end
         }
     };
     
@@ -163,6 +178,7 @@ public:
     static constexpr int kLogLevelInfo = 0;
     static constexpr int kLogLevelWarn = -1;
     static constexpr int kLogLevelError = -2;
+    static constexpr int kLogLevelFile = -3; // mark edit
     static void log(std::string message, int level = kLogLevelInfo)
     {
         if (level >= getSetMinLogLevel())

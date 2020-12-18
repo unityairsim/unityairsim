@@ -147,7 +147,7 @@ protected:
     virtual Vector3r getPosition() const override
     {
         const auto& val = firmware_->offboardApi().getStateEstimator().getPosition();
-        return AirSimSimpleFlightCommon::toVector3r(val);
+        return Vector3r(1.0f, 1.0f, 1.0f);// mark edit AirSimSimpleFlightCommon::toVector3r(val);
     }
 
     virtual Vector3r getVelocity() const override

@@ -146,5 +146,6 @@ bool SimHUD::readSettingsTextFromFile(std::string settingsFilepath, std::string&
 	{
 		PrintLogMessage("Cannot read settings file ", settingsFilepath.c_str(), vehicle_name_.c_str(), ErrorLogSeverity::Error);
 	}
+
 	return false;
 }
